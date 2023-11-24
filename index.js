@@ -3,10 +3,16 @@ const exphbs = require("express-handlebars")
 
 const app = express()
 
-app.get('/', (requisicao, resposta) =>{
-    resposta.send("Ola, mundo")
+
+app.engine('handlebars', exphbs.engine())
+app.set('view engine', 'handlebars')
+
+app.use(express.static("public"))
+
+app.get('/', (requisicao, resposta) => {
+    resposta.render('home')
 })
 
 app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000!")
+    console.log("Servidor rodando na sua mae!")
 })
